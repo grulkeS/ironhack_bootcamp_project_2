@@ -13,7 +13,7 @@ const session    = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 mongoose
-  .connect('mongodb://localhost/project2', {useNewUrlParser: true})
+  .connect(`mongodb:${process.env.HOST}/project2`, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
