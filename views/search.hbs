@@ -1,0 +1,81 @@
+<header>
+  <h1>search</h1>
+  <p>Enter your search criteria to limit results:</p>
+</header>
+
+<form action="" method="" class="input-container">
+  <div class="single-item">
+    <label for="org_entity_id_type">request by</label>
+    <select name="org_entity_id_type">
+      <option value="sap_code" selected>SAP Code</option>
+      <option value="mms_outlet_id">Outlet ID</option>
+    </select>
+  </div>
+
+  <div class="break"></div>
+
+  <div class="single-item">
+    <label for="org_entity_ids">orga entities</label>
+    <select multiple name="org_entity_ids" size="7">
+      <optgroup label="NDC">
+        <option value="SAP4901" selected>4901 Geis Germany</option>
+      </optgroup>
+      <optgroup label="Online Stores">
+        <option value="M860">M860 MM Online</option>
+        <option value="S802">S802 SE Online</option>
+      </optgroup>
+      <optgroup label="Stores">
+        <option value="M001">M001 MEDIA MARKT Ingolstadt</option>
+        <option value="S001">S001 SATURN Hannover</option>
+      </optgroup>
+    </select>
+  </div>
+
+  <div class="single-item">
+    <label for="warehouse_glns">Warehouse GLNs</label>
+    <textarea cols="25" rows="6" name="warehouse_glns" placeholder="insert one or more ..."></textarea>
+  </div>
+
+  <div class="single-item">
+    <label for="storage_locations">storage locations</label>
+    <select multiple name="storage_locations" size="7">
+      <option value="WH" selected>Warehouse</option>
+      <option value="CD1">CrossDocking 1 pre-allocated (PAXD)</option>
+      <option value="CD2">CrossDocking 2 break bulk (BBXD)</option>
+      <option value="QIS">Quality Inspection / Clearing</option>
+      <option value="SCP">Scrap / for disposal</option>
+      <option value="RTV">Return To Vendor</option>
+    </select>
+  </div>
+
+  <div class="single-item">
+    <label for="stock_types">stock types</label>
+    <select multiple name="stock_types" size="7">
+      <option value="unrestricted_use_stock" selected>unrestricted_use_stock</option>
+      <option value="stock_in_quality_inspection">stock_in_quality_inspection</option>
+      <option value="returns">returns</option>
+      <option value="stock_transfers_between_storage_locations">stock_transfers_between_storage_locations</option>
+      <option value="stock_transfers_between_warehouses">stock_transfers_between_warehouses</option>
+      <option value="stock_in_transit">stock_in_transit</option>
+      <option value="blocked_stock">blocked_stock</option>
+    </select>
+  </div>
+
+  <div class="single-item">
+    <label for="product_mdng_ids">Masterdata product ids</label>
+    <textarea cols="25" rows="6" name="product_mdng_ids" placeholder="insert one or more ..."></textarea>
+  </div>
+
+  <div class="single-item">
+    <label for="product_sap_ids">SAP product ids</label>
+    <textarea cols="25" rows="6" name="product_sap_ids" placeholder="insert one or more ..."></textarea>
+
+  </div>
+
+  <div class="break"></div>
+
+  <div class="single-item">
+    <button type="submit">search!</button>
+  </div>
+
+</form>

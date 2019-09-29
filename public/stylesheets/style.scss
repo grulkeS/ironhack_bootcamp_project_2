@@ -1,0 +1,35 @@
+body {
+  padding: 20px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+   background: #000 url('/images/auwaldsee2.jpg') no-repeat top;
+   background-size: cover;
+}
+
+a {
+  color: #fff;   // #00B7FF;
+}
+
+.login-container {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.5em;
+  border-radius: 0.5rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.5em;
+  border-radius: 0.5rem;
+}
+.single-item {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em;
+}
+.break {
+  flex-wrap:wrap;
+  flex-basis: 100%;
+}
