@@ -3,9 +3,9 @@
   <p>Enter your search criteria to limit results:</p>
 </header>
 
-<form action="" method="" class="input-container">
+<form action="" method="" class="input container">
   <div class="single-item">
-    <label for="org_entity_id_type">request by</label>
+    <label for="org_entity_id_type" class="labels">request by</label>
     <select name="org_entity_id_type">
       <option value="sap_code" selected>SAP Code</option>
       <option value="mms_outlet_id">Outlet ID</option>
@@ -15,7 +15,7 @@
   <div class="break"></div>
 
   <div class="single-item">
-    <label for="org_entity_ids">orga entities</label>
+    <label for="org_entity_ids" class="labels">orga entities</label>
     <select multiple name="org_entity_ids" size="7">
       <optgroup label="NDC">
         <option value="SAP4901" selected>4901 Geis Germany</option>
@@ -32,12 +32,12 @@
   </div>
 
   <div class="single-item">
-    <label for="warehouse_glns">Warehouse GLNs</label>
+    <label for="warehouse_glns" class="labels">Warehouse GLNs</label>
     <textarea cols="25" rows="6" name="warehouse_glns" placeholder="insert one or more ..."></textarea>
   </div>
 
   <div class="single-item">
-    <label for="storage_locations">storage locations</label>
+    <label for="storage_locations" class="labels">storage locations</label>
     <select multiple name="storage_locations" size="7">
       <option value="WH" selected>Warehouse</option>
       <option value="CD1">CrossDocking 1 pre-allocated (PAXD)</option>
@@ -49,7 +49,7 @@
   </div>
 
   <div class="single-item">
-    <label for="stock_types">stock types</label>
+    <label for="stock_types" class="labels">stock types</label>
     <select multiple name="stock_types" size="7">
       <option value="unrestricted_use_stock" selected>unrestricted_use_stock</option>
       <option value="stock_in_quality_inspection">stock_in_quality_inspection</option>
@@ -62,12 +62,12 @@
   </div>
 
   <div class="single-item">
-    <label for="product_mdng_ids">Masterdata product ids</label>
+    <label for="product_mdng_ids" class="labels">Masterdata product ids</label>
     <textarea cols="25" rows="6" name="product_mdng_ids" placeholder="insert one or more ..."></textarea>
   </div>
 
   <div class="single-item">
-    <label for="product_sap_ids">SAP product ids</label>
+    <label for="product_sap_ids" class="labels">SAP product ids</label>
     <textarea cols="25" rows="6" name="product_sap_ids" placeholder="insert one or more ..."></textarea>
 
   </div>
@@ -79,3 +79,24 @@
   </div>
 
 </form>
+
+<div class="container results">
+
+  <span class="labels">orga entity</span>
+  <span class="labels">sap product id</span>
+  <span class="labels">md product id</span>
+  <span class="labels">quantity</span>
+  <span class="labels">warehouse GLN</span>
+  <span class="labels">stock_type</span>
+  <span class="labels">storage_location</span>
+  
+  <span>e1 org ent</span>
+  <span>e1 sap no</span>
+  <span>e1 md no</span>
+  <span>e1 qty</span>
+  <span>e1 gln</span>
+  <span>e1 stock type</span>
+  <span>e1 location</span>
+  
+</div>
+
