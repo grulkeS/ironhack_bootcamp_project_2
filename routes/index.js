@@ -27,7 +27,7 @@ router.post('/search', (req, res, next) => {
   let product_mdng_ids   = req.body.product_mdng_ids; 
   let product_sap_ids    = req.body.product_sap_ids;
 
-  console.log('------------ ', org_entity_ids); // [ 'SAP4901', 'M860'] 
+  console.log('------------ ', org_entity_ids); // [ '4901', 'M860'] 
 
 axios.get(`${path}?org_entity_id_type=${org_entity_id_type}&org_entity_ids=${org_entity_ids}&storage_locations=${storage_locations}`,
 {auth: {
@@ -36,8 +36,12 @@ axios.get(`${path}?org_entity_id_type=${org_entity_id_type}&org_entity_ids=${org
 }}
 )
 .then(list => {
-  console.log('######## ', list);
-  res.render('search');
+  console.log('######## ', list.data);
+
+list.data.forEach(element => {element.quantity = parseInt(element.quantity)});
+
+
+  res.render('search', {entries: list.data});
 })
 .catch(err => {
   console.log('Error while requesting the API: ', err);

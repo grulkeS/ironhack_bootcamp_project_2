@@ -90,13 +90,14 @@
   <span class="labels">stock_type</span>
   <span class="labels">storage_location</span>
   
-  <span>e1 org ent</span>
-  <span>e1 sap no</span>
-  <span>e1 md no</span>
-  <span>e1 qty</span>
-  <span>e1 gln</span>
-  <span>e1 stock type</span>
-  <span>e1 location</span>
-  
+  {{#each entries}}
+  <span>{{this.org_entity_id}}</span>
+  <span>{{this.product_sap_id}}</span>
+  <span>{{this.product_mdng_id}}</span>
+  <span>{{this.quantity}}</span>
+  <span>{{this.warehouse_gln}}</span>
+  <span>{{this.stock_type}}</span>
+  <span>{{this.storage_location}}</span>
+  {{/each}}
 </div>
 
