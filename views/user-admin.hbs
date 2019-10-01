@@ -3,27 +3,31 @@
   <p>Add Roles to registered users!</p>
 </header>
 
-<form  action="/savechanges/{{this._id}}" method="POST" class="container login">
+<div class="container login">
+
   <h2>current list of users</h2>
   {{#each users}}
+
    {{this.name}} / {{this.role}} 
 
   <select name="role">
-
     <option value="registered">registered</option>
     <option value="authorized">authorized</option>
     <option value="administrator">administrator</option>
   </select>
-
-  {{/each}}<br>
-
+  <form  action="/savechanges/{{this._id}}" method="POST"></form>
 <button type="submit">save changes</button>
-
 </form>
+
+  {{/each}}
+
+</div>
 
 <form class="logout container">
   <label id="whoami">username</label>
   <a href="/logout">Logout!</a>
-  <a href="/search"><button>Go!</button></a>
 </form>
+<div class="container">
+  <a href="/search"><button>Search</button></a>
+</div>
 
