@@ -74,7 +74,7 @@ router.get('/manageusers', isLoggedIn, (req, res, next) => {
       console.log(users);
       if (users !== null) {
         console.log("manageusers 80 indexjs")
-        res.render('user-admin', users);
+        res.render('user-admin', {users});
 
       } else {
         console.log("keine user gefunden 74")
