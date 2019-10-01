@@ -32,7 +32,7 @@ router.post('/register', (req, res, next) => {
             newUser.save()
                 .then((user) => {
                   console.log("user angelegt 34")
-                  document.getElementById(`whoami`).innerHTML=req.session.currentUser.name;
+                  
                     res.redirect('/');
                 })
                 .catch((err) => {

@@ -21,14 +21,14 @@ router.get('/search', isLoggedIn, (req, res, next) => {
 /* POST search page */
 router.post('/search', isLoggedIn, (req, res, next) => {
   console.log("index slash post 23")
- //let org_entity_id_type = req.body.org_entity_id_type;
- //let org_entity_ids = req.body.org_entity_ids;
- //let warehouse_glns = req.body.warehouse_glns;
- //let storage_locations = req.body.storage_locations;
- //let stock_types = req.body.stock_types;
- //let product_mdng_ids = req.body.product_mdng_ids;
- //let product_sap_ids = req.body.product_sap_ids;
-  let queryObject ={};
+  //let org_entity_id_type = req.body.org_entity_id_type;
+  //let org_entity_ids = req.body.org_entity_ids;
+  //let warehouse_glns = req.body.warehouse_glns;
+  //let storage_locations = req.body.storage_locations;
+  //let stock_types = req.body.stock_types;
+  //let product_mdng_ids = req.body.product_mdng_ids;
+  //let product_sap_ids = req.body.product_sap_ids;
+  let queryObject = {};
   queryObject["org_entity_id_type"] = req.body.org_entity_id_type;
   queryObject["org_entity_ids"] = req.body.org_entity_ids;
   queryObject["warehouse_glns"] = req.body.warehouse_glns;
@@ -36,9 +36,9 @@ router.post('/search', isLoggedIn, (req, res, next) => {
   queryObject["stock_types"] = req.body.stock_types;
   queryObject["product_mdng_ids"] = req.body.product_mdng_ids;
   queryObject["product_sap_ids"] = req.body.product_sap_ids;
-  
-  for(let prop in queryObject){
-    if(queryObject[prop]===""){
+
+  for (let prop in queryObject) {
+    if (queryObject[prop] === "") {
       delete queryObject[prop];
     }
   };
@@ -47,7 +47,8 @@ router.post('/search', isLoggedIn, (req, res, next) => {
 
   //?org_entity_id_type=${org_entity_id_type}&org_entity_ids=${org_entity_ids}&storage_locations=${storage_locations}
   axios.get(`${process.env.API_BASE_PATH}`,
-    {params: queryObject,
+    {
+      params: queryObject,
       auth: {
         username: `${process.env.API_USER}`,
         password: `${process.env.API_PASS}`
@@ -67,13 +68,29 @@ router.post('/search', isLoggedIn, (req, res, next) => {
     })
 });
 
+router.get('/manageusers', isLoggedIn, (req, res, next) => {
+  User.find()
+    .then(users => {
+      if (users !== null) {
+        console.log("keine user gefunden 74")
+        res.render("index", {
+          errorMessage: "no users found"
+        });
+        return;
+      } else {
+        console.log("manageusers 80 indexjs")
+        res.render('user-admin', users);
+      }
+
+    })
+});
 // this is the function we use to make sure the route and the functionality is 
 // available only if we have user in the session
-function isLoggedIn(req, res, next){
-  if(req.session.currentUser && req.session.currentUser.role === "authorized" || req.session.currentUser && req.session.currentUser.role === "administrator"){
+function isLoggedIn(req, res, next) {
+  if (req.session.currentUser && req.session.currentUser.role === "authorized" || req.session.currentUser && req.session.currentUser.role === "administrator") {
     console.log(req.session.currentUser);
     next();
-  } else  {
+  } else {
     res.redirect('/');
   }
 
