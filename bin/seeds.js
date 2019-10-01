@@ -1,4 +1,4 @@
-/*
+
 require('dotenv').config();
 const mongoose = require('mongoose');
 const Outlet = require('../models/outlets');
@@ -44,10 +44,26 @@ const outlets = [
 }
 ]
 
-Outlet.create(outlets, (err) => {
+/*Outlet.create(outlets, (err) => {
   if (err) { throw(err) }
   console.log(`Created ${outlets.length} outlets.`)
   mongoose.connection.close();
 });
 
 */
+
+outlets.forEach(outlet => {
+
+  Outlet.find(outlet)
+  .then(result => console.log('Dich kenn ich scho!'))
+  .catch(err => {
+    console.log('Dich könnt ich neu anlegen, weil: ', err)
+
+  })
+
+});
+
+mongoose.connection.close();
+
+
+
