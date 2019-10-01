@@ -33,9 +33,7 @@ a {
   flex-wrap: wrap;
 }
 
-.results {
-  margin: 0.5rem 0 0 0;
-}
+
 
 .search-anyway {
   display: inline-block;
@@ -64,9 +62,18 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
+  margin: 0.5rem 0 0 0;
   }
   
   .results span {
   padding: 8px 4px;
   border: 0.5px solid #fff
+  }
+
+  .disabled {
+    visibility: hidden;
+  }
+
+  .enabled {
+    visibility: visible;
   }

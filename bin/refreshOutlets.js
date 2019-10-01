@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const Outlet = require('../models/outlets');
 
-mongoose.connect(`${process.env.MONGO_URI}`);
+//mongoose.connect(`${process.env.MONGO_URI}`);
 
 const outlets = [{
     sapNo: '4901',
@@ -53,11 +53,15 @@ outlets.forEach((outlet,index) => {
         Outlet.create(outlet, (err) => {
           if (err) { throw(err) }
           console.log(`***** Was missing, created the missing outlet: `, outlet)
-          if (index === outlets.length-1) {mongoose.connection.close();}
+          if (index === outlets.length-1) {
+            //mongoose.connection.close();
+          }
         });
       
       } else {
-        if (index === outlets.length-1) {mongoose.connection.close();}
+        if (index === outlets.length-1) {
+          //mongoose.connection.close();
+        }
         
       }
 
