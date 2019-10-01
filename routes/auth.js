@@ -69,9 +69,12 @@ router.post('/register', (req, res, next) => {
         // Save the login in the session!
         req.session.currentUser = user;
         console.log(req.session.currentUser)
-        if (req.session.currentUser.role === "authorized" || req.session.currentUser.role === "administrator"){
+        if (req.session.currentUser.role === "authorized" ){
           res.redirect("/search");
-        }else {
+        } else if(req.session.currentUser.role === "administrator"){
+          res.redirect("/manageusers");
+        }
+        else {
           console.log("Ich muss draussen bleiben")
           res.render("index", {
             errorMessage: "You do not have the right yet to proceed."

@@ -9,13 +9,12 @@
   {{#each users}}
 
    {{this.name}} / {{this.role}} 
-
+<form action="/savechanges/{{this._id}}" method="POST" class="login">
   <select name="role">
     <option value="registered">registered</option>
     <option value="authorized">authorized</option>
     <option value="administrator">administrator</option>
   </select>
-  <form action="/savechanges/{{this._id}}" method="POST" class="login">
 <button type="submit">save changes</button>
 </form><br>
 
