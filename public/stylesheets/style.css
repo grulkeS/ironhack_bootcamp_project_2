@@ -19,7 +19,8 @@ a {
   display: inline-block;
   position: absolute;
   top: 3px;
-  right: 3px; }
+  right: 3px;
+  font-weight: bold; }
 
 .input {
   display: flex;
