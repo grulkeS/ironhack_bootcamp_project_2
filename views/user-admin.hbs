@@ -15,9 +15,9 @@
     <option value="authorized">authorized</option>
     <option value="administrator">administrator</option>
   </select>
-  <form  action="/savechanges/{{this._id}}" method="POST"></form>
+  <form action="/savechanges/{{this._id}}" method="POST" class="login">
 <button type="submit">save changes</button>
-</form>
+</form><br>
 
   {{/each}}
 
@@ -27,7 +27,7 @@
   <label id="whoami">username</label>
   <a href="/logout">Logout!</a>
 </form>
-<div class="container">
+<div class="container search-anyway">
   <a href="/search"><button>Search</button></a>
 </div>
 
