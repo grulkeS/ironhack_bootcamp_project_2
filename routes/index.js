@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 
 
-const path = 'http://stock-api-2839734554.feature.stock-api.d-p.io/v1/stocks';
+
 
 
 /* GET home page */
@@ -44,11 +44,11 @@ router.post('/search', (req, res, next) => {
   console.log('------------ ', queryObject.org_entity_ids); // [ '4901', 'M860'] 
 
   //?org_entity_id_type=${org_entity_id_type}&org_entity_ids=${org_entity_ids}&storage_locations=${storage_locations}
-  axios.get(`${path}`,
+  axios.get(`${process.env.API_BASE_PATH}`,
     {params: queryObject,
       auth: {
-        username: 'stock_user',
-        password: 'stock_pass'
+        username: `${process.env.API_USER}`,
+        password: `${process.env.API_PASS}`
       }
     }
   )
