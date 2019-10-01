@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-
+const User = require('../models/user.js');
 
 
 
@@ -71,15 +71,17 @@ router.post('/search', isLoggedIn, (req, res, next) => {
 router.get('/manageusers', isLoggedIn, (req, res, next) => {
   User.find()
     .then(users => {
+      console.log(users);
       if (users !== null) {
+        console.log("manageusers 80 indexjs")
+        res.render('user-admin', users);
+
+      } else {
         console.log("keine user gefunden 74")
         res.render("index", {
           errorMessage: "no users found"
         });
         return;
-      } else {
-        console.log("manageusers 80 indexjs")
-        res.render('user-admin', users);
       }
 
     })
