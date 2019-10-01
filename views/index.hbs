@@ -6,7 +6,7 @@
 
 <section class="main-login">
 
-<form class="login container">
+<form action="/" class="login container" method="POST">
   <h2>Login</h2>
   <div class="single-input">
   <input type="text" placeholder="name" name="username" required>
@@ -14,23 +14,23 @@
   <div class="single-input">
   <input type="password" placeholder="password" name="password" required>
   </div>
-  <a href="/search">Go!</a>
+  <a href="/search"><button type="submit">Go!</button></a>
 </form>
 
-<form class="login container">
+<form action="/register" class="login container" method="POST">
   <h2>Register</h2>
   <div class="single-input">
-  <input type="text" placeholder="name" name="username" required>
+  <input type="text" placeholder="name" name="userNameToReg" required>
   </div>
   <div class="single-input">
-  <input type="password" placeholder="password" name="password" required>
+  <input type="password" placeholder="password" name="passwordToReg" required>
   </div>
-  <a href="/register">Go!</a>
+  <a href="/register"><button type="submit">Go!</button></a>
 </form>
 
-<form class="logout container">
+<form action="/logout" class="logout container" method="POST">
   <label id="whoami">username</label>
-  <a href="/logout">Logout!</a>
+  <a href="/logout"><button type="submit">Logout</button></a>
 </form>
 
 </section>

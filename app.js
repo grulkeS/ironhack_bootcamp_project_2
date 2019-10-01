@@ -9,6 +9,7 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+
 const session    = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
@@ -37,6 +38,13 @@ app.use(session({
   })
 }));
 
+app.use((req, res, next) => {
+  if(req.session.currentUser){
+    res.locals.currentUser = req.session.currentUser; // <== make currentUser variable available in all hbs whenever we have user in the session
+  }
+  next();
+})
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -63,10 +71,10 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 
-const auth = require('./routes/auth');
-app.use('/', auth);
+
 const index = require('./routes/index');
 app.use('/', index);
-
+const auth = require('./routes/auth');
+app.use('/', auth);
 
 module.exports = app;

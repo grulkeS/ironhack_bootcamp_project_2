@@ -8,17 +8,19 @@ const axios = require('axios');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
+  console.log("index slash get 11");
   res.render('index');
 });
 
 /* GET search page */
-router.get('/search', (req, res, next) => {
+router.get('/search', isLoggedIn, (req, res, next) => {
+  console.log("search slash get 17")
   res.render('search');
 });
 
 /* POST search page */
-router.post('/search', (req, res, next) => {
-
+router.post('/search', isLoggedIn, (req, res, next) => {
+  console.log("index slash post 23")
  //let org_entity_id_type = req.body.org_entity_id_type;
  //let org_entity_ids = req.body.org_entity_ids;
  //let warehouse_glns = req.body.warehouse_glns;
@@ -63,14 +65,18 @@ router.post('/search', (req, res, next) => {
     .catch(err => {
       console.log('Error while requesting the API: ', err);
     })
-
-
-
-
-
-
-
 });
 
+// this is the function we use to make sure the route and the functionality is 
+// available only if we have user in the session
+function isLoggedIn(req, res, next){
+  if(req.session.currentUser && req.session.currentUser.role === "authorized" || req.session.currentUser && req.session.currentUser.role === "administrator"){
+    console.log(req.session.currentUser);
+    next();
+  } else  {
+    res.redirect('/');
+  }
+
+}
 
 module.exports = router;
