@@ -77,4 +77,6 @@ app.use('/', index);
 const auth = require('./routes/auth');
 app.use('/', auth);
 
+//let OutletMasterData = require('../bin/refreshOutlets');
+
 module.exports = app;
