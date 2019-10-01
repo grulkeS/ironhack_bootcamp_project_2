@@ -10,13 +10,20 @@ a {
 }
 
 .container {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   padding: 0.5em;
   border-radius: 0.5rem;
 }
 
 .login {
   display: inline-block;
+}
+
+.logout {
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  right: 3px;
 }
 
 .input {
