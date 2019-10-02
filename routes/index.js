@@ -24,26 +24,37 @@ router.post('/selectMainCriteria',(req, res, next) => {
 Outlet.find()
 .then(allOutlets => {
   let identifier = req.body.selectNow;
-  //console.log(identifier, '#######');
+  // console.log(identifier, '#######', typeof(identifier));
 
 
 
 if (identifier === 'mms_outlet_id') {
 //filter sapNo oder outlet ID
-let newList = Array.from(allOutlets);
+/*let newList = Array.from(allOutlets);
 
-newList.forEach(outlet => {
-  console.log(outlet.outletId,'### this one');
-  outlet["identifier2"] = outlet.outletId;
+newList.forEach((outlet, index) => {
+  newList[index].ident=identifier;
 })
-console.log(newList);
+console.log("in if",newList);
+*/
 
+const newList = allOutlets.map(outlet => {
+  const res = {...outlet}._doc;
+  res.ident = res.outletId;
+  return res;
+});
+res.render('search', {outlets: newList})
 } else {
-//filter sapNo oder outlet ID
+  const newList = allOutlets.map(outlet => {
+    const res = {...outlet}._doc;
+    res.ident = res.sapNo;
+    return res;
+  });
+  res.render('search', {outlets: newList})
 }
 
 
-  res.render('search', {outlets: allOutlets})
+  //res.render('search', {outlets: newList})
 })
 .catch(err => console.log('error: '.err))
 
