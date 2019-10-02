@@ -51,14 +51,14 @@ const newList = allOutlets.map(outlet => {
   res.ident = res.outletId;
   return res;
 });
-res.render('search', {outlets: newList, session: req.session.currentUser})
+res.render('search', {outlets: newList, session: req.session.currentUser, searchCriteria: req.body.selectNow})
 } else {
   const newList = allOutlets.map(outlet => {
     const res = {...outlet}._doc;
     res.ident = res.sapNo;
     return res;
   });
-  res.render('search', {outlets: newList, session: req.session.currentUser})
+  res.render('search', {outlets: newList, session: req.session.currentUser, searchCriteria: req.body.selectNow})
 }
 
 
@@ -105,7 +105,7 @@ router.post('/search', isLoggedIn, (req, res, next) => {
       list.data.forEach(element => { element.quantity = parseInt(element.quantity) });
 
 
-      res.render('search', { entries: list.data, session: req.session.currentUser });
+      res.render('search', { entries: list.data, searchCriteria: req.body.selectNow, session: req.session.currentUser });
     })
     .catch(err => {
       console.log('Error while requesting the API: ', err);

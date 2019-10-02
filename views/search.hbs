@@ -17,7 +17,7 @@
 
 </form>
 </div>
-
+{{#if searchCriteria}}
 <form action="/search" method="POST" class="input container">
   <div class="single-item">
 
@@ -99,7 +99,8 @@
   </div>
 
 </form>
-
+{{/if}}
+{{#if entries}}
 <div class="container results enabled">
 
   <span class="labels">orga entity</span>
@@ -120,6 +121,7 @@
   <span>{{this.storage_location}}</span>
   {{/each}}
 </div>
+{{/if}}
 {{#if session}}
 <form class="logout container enabled">
   <label id="whoami">{{session.name}}</label>
