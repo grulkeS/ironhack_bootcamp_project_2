@@ -3,15 +3,21 @@
   <p>Add Roles to registered users!</p>
 </header>
 
-<div class="container admin">
+<div class="container login">
 
   <h2>current list of users</h2>
 
-<table>
+<table class="admin">
+<tr>
+  <th>username</th>
+  <th>current role</th>
+  <th>change the role settings</th>
+</tr>
+
 
     {{#each users}}
       <tr>
-      <td> {{this.name}} / {{this.role}} </td>
+      <td>{{this.name}}</td><td>{{this.role}}</td>
 
 <td>
       <form action="/savechanges/{{this._id}}" method="POST" class="login">

@@ -7,6 +7,9 @@ body {
 a {
   color: #fff; }
 
+th {
+  border-bottom: 1px solid white; }
+
 .container {
   background: rgba(255, 255, 255, 0.6);
   padding: 0.5em;
@@ -28,7 +31,8 @@ a {
   flex-wrap: wrap; }
 
 .admin {
-  display: inline-block; }
+  border-spacing: 5px;
+  text-align: left; }
 
 .search-anyway {
   display: inline-block;

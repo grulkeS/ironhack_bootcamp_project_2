@@ -9,6 +9,10 @@ a {
   color: #fff;   // #00B7FF;
 }
 
+th {
+  border-bottom: 1px solid white;
+}
+
 .container {
   background: rgba(255, 255, 255, 0.6);
   padding: 0.5em;
@@ -34,7 +38,8 @@ a {
 }
 
 .admin {
-  display: inline-block;
+  border-spacing: 5px;
+  text-align: left;
 }
 
 .search-anyway {
