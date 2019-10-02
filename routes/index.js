@@ -8,13 +8,21 @@ const Outlet = require('../models/outlets');
 /* GET home page */
 router.get('/', (req, res, next) => {
   console.log("index slash get 11");
+  if(req.session.currentUser !== null){
+    res.render('index', {session: req.session.currentUser});  
+  }else{
   res.render('index');
+}
 });
 
 /* GET search page */
 router.get('/search', isLoggedIn, (req, res, next) => {
   console.log("search slash get 17")
+  if(req.session.currentUser !== null){
+  res.render('search', {session: req.session.currentUser});
+  }else{
   res.render('search');
+}
 });
 
 
@@ -43,14 +51,14 @@ const newList = allOutlets.map(outlet => {
   res.ident = res.outletId;
   return res;
 });
-res.render('search', {outlets: newList})
+res.render('search', {outlets: newList, session: req.session.currentUser})
 } else {
   const newList = allOutlets.map(outlet => {
     const res = {...outlet}._doc;
     res.ident = res.sapNo;
     return res;
   });
-  res.render('search', {outlets: newList})
+  res.render('search', {outlets: newList, session: req.session.currentUser})
 }
 
 
@@ -78,8 +86,8 @@ router.post('/search', isLoggedIn, (req, res, next) => {
       delete queryObject[prop];
     }
   };
-  console.log(queryObject);
-  console.log('------------ ', queryObject.org_entity_ids); // [ '4901', 'M860'] 
+  // console.log(queryObject);
+  // console.log('------------ ', queryObject.org_entity_ids); // [ '4901', 'M860'] 
 
   //?org_entity_id_type=${org_entity_id_type}&org_entity_ids=${org_entity_ids}&storage_locations=${storage_locations}
   axios.get(`${process.env.API_BASE_PATH}`,
@@ -97,7 +105,7 @@ router.post('/search', isLoggedIn, (req, res, next) => {
       list.data.forEach(element => { element.quantity = parseInt(element.quantity) });
 
 
-      res.render('search', { entries: list.data });
+      res.render('search', { entries: list.data, session: req.session.currentUser });
     })
     .catch(err => {
       console.log('Error while requesting the API: ', err);
@@ -110,12 +118,12 @@ router.get('/manageusers', isLoggedIn, (req, res, next) => {
       console.log(users);
       if (users !== null) {
         console.log("manageusers 80 indexjs")
-        res.render('user-admin', {users});
+        res.render('user-admin', {users, session: req.session.currentUser});
 
       } else {
         console.log("keine user gefunden 74")
         res.render("index", {
-          errorMessage: "no users found"
+          errorMessage: "no users found", session: req.session.currentUser
         });
         return;
       }

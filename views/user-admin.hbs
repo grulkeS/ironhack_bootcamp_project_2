@@ -34,11 +34,12 @@
     {{/each}}
 
 </table>
-
+  {{#if session}}
   <form class="logout container">
-    <label id="whoami">username</label>
+    <label id="whoami">{{session.name}}</label>
     <a href="/logout">Logout!</a>
   </form>
+  {{/if}}
   <div class="container search-anyway">
     <a href="/search"><button>Search</button></a>
   </div>

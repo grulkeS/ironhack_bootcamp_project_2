@@ -41,10 +41,10 @@ router.post('/register', (req, res, next) => {
                 })
         })
     });
-    router.get('/', (req, res, next) => {
+    /*router.get('/', (req, res, next) => {
       console.log("authjs index slash get 44")
         res.render('index')
-    });
+    });*/
     router.post('/', (req, res, next) => {
         const username = req.body.username;
         const password = req.body.password;

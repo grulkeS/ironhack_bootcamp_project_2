@@ -28,10 +28,11 @@
   <a href="/register"><button type="submit">Go!</button></a>
 </form>
 
+{{#if session}}
 <form action="/logout" class="logout container disabled" method="POST">
-  <label id="whoami">username</label>
+  <label id="whoami">{{session.name}}</label>
   <a href="/logout"><button type="submit">Logout</button></a>
 </form>
-
+{{/if}}
 
 </section>
