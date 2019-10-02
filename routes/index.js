@@ -21,13 +21,7 @@ router.get('/search', isLoggedIn, (req, res, next) => {
 /* POST search page */
 router.post('/search', isLoggedIn, (req, res, next) => {
   console.log("index slash post 23")
-  //let org_entity_id_type = req.body.org_entity_id_type;
-  //let org_entity_ids = req.body.org_entity_ids;
-  //let warehouse_glns = req.body.warehouse_glns;
-  //let storage_locations = req.body.storage_locations;
-  //let stock_types = req.body.stock_types;
-  //let product_mdng_ids = req.body.product_mdng_ids;
-  //let product_sap_ids = req.body.product_sap_ids;
+
   let queryObject = {};
   queryObject["org_entity_id_type"] = req.body.org_entity_id_type;
   queryObject["org_entity_ids"] = req.body.org_entity_ids;
