@@ -1,10 +1,15 @@
 body {
   padding: 20px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px  'Righteous', Arial, sans-serif;
+  font-weight: 400;
    background: #000 url('/images/auwaldsee2.jpg') no-repeat top;
    background-size: cover;
 }
-
+h1 {
+  color: white;
+  // font-size: 1.5vw;
+  margin: 0.8vw;
+}
 a {
   color: #fff;   // #00B7FF;
 }
@@ -83,4 +88,12 @@ th {
 
   .enabled {
     visibility: visible;
+  }
+
+  #app-bar {
+    background-color: black;
+    width: 100vw;
+    position: absolute;
+    top: 0px;
+    left: 0px;
   }

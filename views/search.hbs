@@ -3,21 +3,23 @@
   <p>Enter your search criteria to limit results:</p>
 </header>
 
+<div class="container">
 <form action="/selectMainCriteria" method="POST">
   <label class="labels">request by</label>
-    <select name="selectNow">
-      <option value="sap_code" selected>SAP Code</option>
+  <select name="selectNow" oninput="this.form.submit()"> 
+
+      <option></option>
+      <option value="sap_code">SAP Code</option>
       <option value="mms_outlet_id">Outlet ID</option>
+
     </select>
-<button type="submit">change</button>
+  <!--<button type="submit">change</button> -->
 
 </form>
-
+</div>
 
 <form action="/search" method="POST" class="input container">
   <div class="single-item">
-
-    <input id="org_entity_id_type" name="org_entity_id_type" value="" disabled/>
 
     </select>
   </div>
@@ -45,6 +47,7 @@
        </optgroup>--}}
 
 {{/each}}
+
     </select>
   </div>
 

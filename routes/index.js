@@ -4,6 +4,7 @@ const axios = require('axios');
 const User = require('../models/user.js');
 const mongoose = require('mongoose');
 const Outlet = require('../models/outlets');
+let currentSelection = "";
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -32,11 +33,10 @@ router.post('/selectMainCriteria',(req, res, next) => {
 Outlet.find()
 .then(allOutlets => {
   let identifier = req.body.selectNow;
-  // console.log(identifier, '#######', typeof(identifier));
-
-
+  currentSelection = req.body.selectNow;
 
 if (identifier === 'mms_outlet_id') {
+
 //filter sapNo oder outlet ID
 /*let newList = Array.from(allOutlets);
 
@@ -73,7 +73,7 @@ router.post('/search', isLoggedIn, (req, res, next) => {
   console.log("index slash post 23")
 
   let queryObject = {};
-  queryObject["org_entity_id_type"] = req.body.org_entity_id_type;
+  queryObject["org_entity_id_type"] = currentSelection; //req.body.org_entity_id_type;
   queryObject["org_entity_ids"] = req.body.org_entity_ids;
   queryObject["warehouse_glns"] = req.body.warehouse_glns;
   queryObject["storage_locations"] = req.body.storage_locations;
