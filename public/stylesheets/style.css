@@ -13,7 +13,8 @@ a {
   color: #fff; }
 
 th {
-  border-bottom: 1px solid white; }
+  border-bottom: 1px solid white;
+  font-weight: normal; }
 
 .container {
   background: rgba(255, 255, 255, 0.6);
@@ -36,7 +37,7 @@ th {
   flex-wrap: wrap; }
 
 .admin {
-  border-spacing: 5px;
+  border-spacing: 15px;
   text-align: left; }
 
 .search-anyway {
