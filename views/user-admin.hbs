@@ -31,7 +31,11 @@
       <button type="submit">save changes</button>
     </form>
 </td>
-<td><button>X</button></td>
+<td>
+  <form action="/delete" method="POST">
+  <button type="submit">X</button>
+  </form>
+  </td>
 
     </tr>
     {{/each}}
