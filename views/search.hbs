@@ -3,12 +3,22 @@
   <p>Enter your search criteria to limit results:</p>
 </header>
 
-<form action="/search" method="POST" class="input container">
-  <div class="single-item">
-    <label for="org_entity_id_type" class="labels">request by</label>
-    <select name="org_entity_id_type">
+<form action="/selectMainCriteria" method="POST">
+  <label class="labels">request by</label>
+    <select name="selectNow">
       <option value="sap_code" selected>SAP Code</option>
       <option value="mms_outlet_id">Outlet ID</option>
+    </select>
+<button type="submit">change</button>
+
+</form>
+
+
+<form action="/search" method="POST" class="input container">
+  <div class="single-item">
+
+    <input id="org_entity_id_type" name="org_entity_id_type" value="" disabled/>
+
     </select>
   </div>
 
@@ -17,17 +27,24 @@
   <div class="single-item">
     <label for="org_entity_ids" class="labels">orga entities</label>
     <select multiple name="org_entity_ids" size="7">
-      <optgroup label="NDC">
+
+{{#each outlets}}
+
+<option value="{{this.sapNo}}">{{this.sapNo}} {{this.name}}</option>
+
+      {{!-- <optgroup label="NDC"> 
         <option value="4901" selected>4901 Geis Germany</option>
-      </optgroup>
-      <optgroup label="Online Stores">
+       </optgroup>
+       <optgroup label="Online Stores">
         <option value="M860">M860/1125 MM Online</option>
         <option value="S802">S802/1015 SE Online</option>
-      </optgroup>
-      <optgroup label="Stores">
+       </optgroup>
+       <optgroup label="Stores">
         <option value="M001">M001 MEDIA MARKT Ingolstadt</option>
         <option value="S001">S001 SATURN Hannover</option>
-      </optgroup>
+       </optgroup>--}}
+
+{{/each}}
     </select>
   </div>
 

@@ -2,9 +2,8 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const User = require('../models/user.js');
-
-
-
+const mongoose = require('mongoose');
+const Outlet = require('../models/outlets');
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -16,6 +15,38 @@ router.get('/', (req, res, next) => {
 router.get('/search', isLoggedIn, (req, res, next) => {
   console.log("search slash get 17")
   res.render('search');
+});
+
+
+/* POST main search criteria */
+router.post('/selectMainCriteria',(req, res, next) => {
+
+Outlet.find()
+.then(allOutlets => {
+  let identifier = req.body.selectNow;
+  //console.log(identifier, '#######');
+
+
+
+if (identifier === 'mms_outlet_id') {
+//filter sapNo oder outlet ID
+let newList = Array.from(allOutlets);
+
+newList.forEach(outlet => {
+  console.log(outlet.outletId,'### this one');
+  outlet["identifier2"] = outlet.outletId;
+})
+console.log(newList);
+
+} else {
+//filter sapNo oder outlet ID
+}
+
+
+  res.render('search', {outlets: allOutlets})
+})
+.catch(err => console.log('error: '.err))
+
 });
 
 /* POST search page */
