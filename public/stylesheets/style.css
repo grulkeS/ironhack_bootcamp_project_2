@@ -16,6 +16,31 @@ th {
   border-bottom: 1px solid white;
   font-weight: normal; }
 
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3); }
+
+select option {
+  color: darkslategrey;
+  font-family: 'Righteous';
+  font-weight: normal;
+  font-size: 0.7rem; }
+
+textarea {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+  font-family: 'Righteous';
+  font-weight: normal;
+  font-size: 0.7rem; }
+
 .container {
   background: rgba(255, 255, 255, 0.6);
   padding: 0.5em;
