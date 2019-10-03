@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema ({
  name: {type: String},
  password: {type: String},
- role: {type: String, default: "registered" , enum: ['registered', 'authorized', 'administrator']}
+ role: {type: String, default: "registered" , enum: ['registered', 'authorized', 'administrator']},
+ search: []
 })
 
 const User = mongoose.model("User", userSchema);

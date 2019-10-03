@@ -147,6 +147,17 @@ router.post('/savechanges/:userId', isLoggedIn, (req, res, next) => {
     console.log('Error while updating Role ', err);
   })
 });
+
+router.post('/delete/:userId', isLoggedIn, (req, res, next) => {
+  console.log(req.body.role + "91 indexjs");
+  User.findByIdAndRemove(req.params.userId)
+  .then(user => {
+    res.redirect("/manageusers");
+  })
+  .catch(err => {
+    console.log('Error while updating Role ', err);
+  })
+});
 // this is the function we use to make sure the route and the functionality is 
 // available only if we have user in the session
 function isLoggedIn(req, res, next) {
