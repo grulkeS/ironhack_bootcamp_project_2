@@ -25,7 +25,13 @@ router.get('/search', isLoggedIn, (req, res, next) => {
   res.render('search');
 }
 });
-
+router.get('/selectMainCriteria', isLoggedIn, (req, res, next) => {
+  if(req.session.currentUser !== null){
+  res.redirect('/search');
+  }else{
+  res.redirect('/');
+}
+});
 
 /* POST main search criteria */
 router.post('/selectMainCriteria',(req, res, next) => {
@@ -71,6 +77,10 @@ res.render('search', {outlets: newList, session: req.session.currentUser, search
 /* POST search page */
 router.post('/search', isLoggedIn, (req, res, next) => {
   console.log("index slash post 23")
+  //User.findByIdAndUpdate(req.session.currentUser._id, {$set:{"search": []}})
+  //.then((user) =>{
+    //console.log(user);
+  
 
   let queryObject = {};
   queryObject["org_entity_id_type"] = currentSelection; //req.body.org_entity_id_type;
@@ -101,15 +111,19 @@ router.post('/search', isLoggedIn, (req, res, next) => {
   )
     .then(list => {
       console.log('######## ', list.data);
-
       list.data.forEach(element => { element.quantity = parseInt(element.quantity) });
-
-
-      res.render('search', { entries: list.data, searchCriteria: req.body.selectNow, session: req.session.currentUser });
-    })
-    .catch(err => {
+      //console.log(user, "test")
+       // User.findByIdAndUpdate(req.session.currentUser._id, {$addToSet: {"search" : list.data}})
+       // .then((user2) =>{
+         // console.log(user2)
+          //res.render('search', { entries: user2.search, searchCriteria: req.body.selectNow, session: req.session.currentUser });
+          res.render('search', { entries: list.data, searchCriteria: req.body.selectNow, session: req.session.currentUser });
+      //  })
+      })
+      .catch(err => {
       console.log('Error while requesting the API: ', err);
     })
+ // })
 });
 
 router.get('/manageusers', isLoggedIn, (req, res, next) => {
@@ -155,7 +169,7 @@ router.post('/delete/:userId', isLoggedIn, (req, res, next) => {
     res.redirect("/manageusers");
   })
   .catch(err => {
-    console.log('Error while updating Role ', err);
+    console.log('Error while deleting user ', err);
   })
 });
 // this is the function we use to make sure the route and the functionality is 
