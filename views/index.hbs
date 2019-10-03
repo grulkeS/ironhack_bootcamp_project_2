@@ -1,5 +1,6 @@
 <header>
   <div class="keep-clear"></div>
+
   <div class="icon-bar">
 
     {{#if session}}
@@ -13,8 +14,8 @@
 
 
     <div class="icon whoami">
-        <img src="/images/user.svg"><br>
-        {{session.name}}
+      <img src="/images/user.svg"><br>
+      {{session.name}}
     </div>
 
     <div class="icon">
@@ -23,11 +24,16 @@
     {{/if}}
 
   </div>
+
+  {{#if errorMessage}}
+  <div class="container messages"> {{errorMessage}} </div>
+  {{/if}}
+
   <p>Request stocks for online, store and wholesale!</p>
 </header>
 
 <section class="main-login">
-{{#unless session}}
+  {{#unless session}}
 
   <form action="/" class="login container" method="POST">
     <h2>Login</h2>
@@ -37,7 +43,7 @@
     <div class="single-input">
       <input type="password" placeholder="password" name="password" required>
     </div>
-    <a href="/search"><button type="submit">Go!</button></a>
+    <a href="/search"><button type="submit" class="button-sign">Go!</button></a>
   </form>
 
   <form action="/register" class="login container" method="POST">
@@ -48,8 +54,8 @@
     <div class="single-input">
       <input type="password" placeholder="password" name="passwordToReg" required>
     </div>
-    <a href="/register"><button type="submit">Go!</button></a>
+    <a href="/register"><button type="submit" class="button-sign">Go!</button></a>
   </form>
 
-{{/unless}}
+  {{/unless}}
 </section>

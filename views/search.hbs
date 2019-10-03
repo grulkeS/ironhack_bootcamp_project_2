@@ -12,8 +12,8 @@
 
     {{#if session}}
     <div class="icon whoami">
-        <img src="/images/user.svg"><br>
-        {{session.name}}
+      <img src="/images/user.svg"><br>
+      {{session.name}}
     </div>
 
     <div class="icon">
@@ -22,6 +22,11 @@
     {{/if}}
 
   </div>
+
+  {{#if errorMessage}}
+  <div class="container messages"> {{errorMessage}} </div>
+  {{/if}}
+
   <h1>search</h1>
   <p>Enter your search criteria to limit results:</p>
 </header>
@@ -118,11 +123,20 @@
   <div class="break"></div>
 
   <div class="single-item">
-    <button type="submit">search!</button>
+    <button type="submit" class="button-search">search!</button>
   </div>
 
 </form>
 {{/if}}
+
+{{!-- {{#if pages}}
+{{#each page}}
+<span class="link-list">
+  <a href="/search/{{this}}">{{this}}</a>
+</span>
+{{/each}}
+{{/if}} --}}
+
 {{#if entries}}
 <div class="container results enabled">
 

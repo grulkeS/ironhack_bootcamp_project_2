@@ -13,8 +13,8 @@
     {{#if session}}
 
     <div class="icon whoami">
-        <img src="/images/user.svg"><br>
-        {{session.name}}
+      <img src="/images/user.svg"><br>
+      {{session.name}}
     </div>
 
     <div class="icon">
@@ -22,7 +22,12 @@
     </div>
 
     {{/if}}
+
   </div>
+
+  {{#if errorMessage}}
+  <div class="container messages"> {{errorMessage}} </div>
+  {{/if}}
 
   <h1>User Administration for Stock Provider</h1>
   <p>Add Roles to registered users!</p>
@@ -36,7 +41,7 @@
     <tr>
       <th>username</th>
       <th>current role</th>
-      <th>change the role settings</th>
+      <th>change the role</th>
       <th>delete</th>
     </tr>
 
@@ -54,12 +59,12 @@
             <option value="authorized">authorized</option>
             <option value="administrator">administrator</option>
           </select>
-          <button type="submit">save changes</button>
+          <button type="submit" class="button-edit"><img src="/images/save.svg"> save</button>
         </form>
       </td>
       <td>
         <form action="/delete/{{this._id}}" method="POST">
-          <button type="submit" class="button-delete"><img src="/images/trash.svg"></button>
+          <button type="submit" class="button-edit"><img src="/images/trash.svg"></button>
         </form>
       </td>
 

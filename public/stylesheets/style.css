@@ -15,7 +15,11 @@ a {
 
 th {
   border-bottom: 1px solid white;
-  font-weight: normal; }
+  font-weight: 400;
+  text-transform: uppercase; }
+
+td {
+  vertical-align: bottom; }
 
 select {
   appearance: none;
@@ -44,6 +48,7 @@ textarea {
 
 .container {
   background: rgba(255, 255, 255, 0.6);
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
   padding: 0.5em;
   border-radius: 0.5rem; }
 
@@ -54,6 +59,11 @@ textarea {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
+
+.single-input input {
+  width: 150px;
+  border-radius: 3px;
+  margin: 1px; }
 
 .admin {
   border-spacing: 15px;
@@ -127,12 +137,38 @@ textarea {
 .keep-clear {
   height: 50px; }
 
-.button-delete {
+.button-sign {
+  background: linear-gradient(mediumpurple, rebeccapurple);
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  height: 25px;
+  border-radius: 3px;
+  margin-top: 2px; }
+
+.button-edit {
   background-color: transparent;
   border: none;
   cursor: pointer; }
 
-.button-delete img {
+.button-edit img {
   height: 20px; }
+
+.linkList {
+  background-color: white;
+  border: 1px solid black; }
+
+.messages {
+  position: fixed;
+  top: 51px;
+  right: 0px; }
+
+.button-search {
+  background: linear-gradient(mediumpurple, rebeccapurple);
+  color: white;
+  font-weight: bold;
+  width: calc(100vw - 80px - 1em);
+  border-radius: 3px;
+  height: 25px; }
 
 /*# sourceMappingURL=style.css.map */
