@@ -113,14 +113,20 @@ router.post('/search', isLoggedIn, (req, res, next) => {
 });
 
 router.get('/manageusers', isLoggedIn, (req, res, next) => {
+  backURL=req.header('Referer') || '/';
+  // do your thang
+ 
   User.find()
     .then(users => {
       console.log(users);
-      if (users !== null) {
+      if (users !== null && users.role === "administrator") {
         console.log("manageusers 80 indexjs")
         res.render('user-admin', {users, session: req.session.currentUser});
 
-      } else {
+      }else if(users !== null && users.role !== "administrator") {
+        
+        res.redirect(backURL);
+      }else {
         console.log("keine user gefunden 74")
         res.render("index", {
           errorMessage: "no users found", session: req.session.currentUser
