@@ -119,11 +119,11 @@ router.get('/manageusers', isLoggedIn, (req, res, next) => {
   User.find()
     .then(users => {
       console.log(users);
-      if (users !== null && users.role === "administrator") {
+      if (users !== null && req.session.currentUser.role === "administrator") {
         console.log("manageusers 80 indexjs")
         res.render('user-admin', {users, session: req.session.currentUser});
 
-      }else if(users !== null && users.role !== "administrator") {
+      }else if(req.session.currentUser.role === "authorized") {
         
         res.redirect(backURL);
       }else {
