@@ -1,37 +1,37 @@
-
 <header>
+  <div class="keep-clear"></div>
   <p>Request stocks for online, store and wholesale!</p>
 </header>
 
 <section class="main-login">
 
-<form action="/" class="login container" method="POST">
-  <h2>Login</h2>
-  <div class="single-input">
-  <input type="text" placeholder="name" name="username" required>
-  </div>
-  <div class="single-input">
-  <input type="password" placeholder="password" name="password" required>
-  </div>
-  <a href="/search"><button type="submit">Go!</button></a>
-</form>
+  <form action="/" class="login container" method="POST">
+    <h2>Login</h2>
+    <div class="single-input">
+      <input type="text" placeholder="name" name="username" required>
+    </div>
+    <div class="single-input">
+      <input type="password" placeholder="password" name="password" required>
+    </div>
+    <a href="/search"><button type="submit">Go!</button></a>
+  </form>
 
-<form action="/register" class="login container" method="POST">
-  <h2>Register</h2>
-  <div class="single-input">
-  <input type="text" placeholder="name" name="userNameToReg" required>
-  </div>
-  <div class="single-input">
-  <input type="password" placeholder="password" name="passwordToReg" required>
-  </div>
-  <a href="/register"><button type="submit">Go!</button></a>
-</form>
+  <form action="/register" class="login container" method="POST">
+    <h2>Register</h2>
+    <div class="single-input">
+      <input type="text" placeholder="name" name="userNameToReg" required>
+    </div>
+    <div class="single-input">
+      <input type="password" placeholder="password" name="passwordToReg" required>
+    </div>
+    <a href="/register"><button type="submit">Go!</button></a>
+  </form>
 
-{{#if session}}
-<form action="/logout" class="logout container disabled" method="POST">
-  <label id="whoami">{{session.name}}</label>
-  <a href="/logout"><button type="submit">Logout</button></a>
-</form>
-{{/if}}
+  {{#if session}}
+  <form action="/logout" class="logout container disabled" method="POST">
+    <label id="whoami">{{session.name}}</label>
+    <a href="/logout"><button type="submit">Logout</button></a>
+  </form>
+  {{/if}}
 
 </section>

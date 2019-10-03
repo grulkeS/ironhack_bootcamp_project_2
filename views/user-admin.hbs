@@ -1,4 +1,5 @@
 <header>
+  <div class="keep-clear"></div>
   <h1>User Administration for Stock Provider</h1>
   <p>Add Roles to registered users!</p>
 </header>
@@ -7,46 +8,48 @@
 
   <h2>current list of users</h2>
 
-<table class="admin">
-<tr>
-  <th>username</th>
-  <th>current role</th>
-  <th>change the role settings</th>
-    <th>delete</th>
-</tr>
+  <table class="admin">
+    <tr>
+      <th>username</th>
+      <th>current role</th>
+      <th>change the role settings</th>
+      <th>delete</th>
+    </tr>
 
 
     {{#each users}}
-      <tr>
-      <td>{{this.name}}</td><td>{{this.role}}</td>
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.role}}</td>
 
-<td>
-      <form action="/savechanges/{{this._id}}" method="POST" class="login">
-      
-        <select name="role">
-          <option value="registered">registered</option>
-          <option value="authorized">authorized</option>
-          <option value="administrator">administrator</option>
-        </select>
-      <button type="submit">save changes</button>
-    </form>
-</td>
-<td>
-  <form action="/delete/{{this._id}}" method="POST">
-  <button type="submit">X</button>
-  </form>
-  </td>
+      <td>
+        <form action="/savechanges/{{this._id}}" method="POST" class="login">
+
+          <select name="role">
+            <option value="registered">registered</option>
+            <option value="authorized">authorized</option>
+            <option value="administrator">administrator</option>
+          </select>
+          <button type="submit">save changes</button>
+        </form>
+      </td>
+      <td>
+        <form action="/delete/{{this._id}}" method="POST">
+          <button type="submit">X</button>
+        </form>
+      </td>
 
     </tr>
     {{/each}}
 
-</table>
+  </table>
   {{#if session}}
   <form class="logout container">
     <label id="whoami">{{session.name}}</label>
-    <a href="/logout">Logout!</a>
+    
+    <a href="/logout"><img src="/images/sign-out.svg"></a>
   </form>
   {{/if}}
-  <div class="container search-anyway">
-    <a href="/search"><button>Search</button></a>
+  <div class="icon-top">
+    <a href="/search"><img src="/images/search.svg"></a>
   </div>

@@ -1,21 +1,22 @@
 <header>
+  <div class="keep-clear"></div>
   <h1>search</h1>
   <p>Enter your search criteria to limit results:</p>
 </header>
 
 <div class="container">
-<form action="/selectMainCriteria" method="POST">
-  <label class="labels">request by</label>
-  <select name="selectNow" oninput="this.form.submit()"> 
+  <form action="/selectMainCriteria" method="POST">
+    <label class="labels">request by</label>
+    <select name="selectNow" oninput="this.form.submit()">
 
       <option></option>
       <option value="sap_code">SAP Code</option>
       <option value="mms_outlet_id">Outlet ID</option>
 
     </select>
-  <!--<button type="submit">change</button> -->
+    <!--<button type="submit">change</button> -->
 
-</form>
+  </form>
 </div>
 {{#if searchCriteria}}
 <form action="/search" method="POST" class="input container">
@@ -30,9 +31,9 @@
     <label for="org_entity_ids" class="labels">orga entities</label>
     <select multiple name="org_entity_ids" size="7">
 
-{{#each outlets}}
+      {{#each outlets}}
 
-<option value="{{this.ident}}">{{this.ident}} {{this.name}}</option>
+      <option value="{{this.ident}}">{{this.ident}} {{this.name}}</option>
 
       {{!-- <optgroup label="NDC"> 
         <option value="4901" selected>4901 Geis Germany</option>
@@ -46,7 +47,7 @@
         <option value="S001">S001 SATURN Hannover</option>
        </optgroup>--}}
 
-{{/each}}
+      {{/each}}
 
     </select>
   </div>
@@ -110,7 +111,7 @@
   <span class="labels">warehouse GLN</span>
   <span class="labels">stock type</span>
   <span class="labels">storage location</span>
-  
+
   {{#each entries}}
   <span>{{this.org_entity_id}}</span>
   <span>{{this.product_sap_id}}</span>
@@ -128,3 +129,4 @@
   <a href="/logout">Logout!</a>
 </form>
 {{/if}}
+<div class="icon-top"><a href="/manageusers"><img src="/images/settings.svg"></a></div>

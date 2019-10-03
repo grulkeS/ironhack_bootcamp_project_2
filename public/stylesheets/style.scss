@@ -60,7 +60,7 @@ textarea {
 
 .logout {
   display: inline-block;
-  position: absolute;
+  position: fixed;
   top: 3px;
   right: 3px;
   font-weight: bold;
@@ -77,11 +77,11 @@ textarea {
   text-align: left;
 }
 
-.search-anyway {
+.icon-top {
   display: inline-block;
-  position: absolute;
-  top: 30px;
-  right: 3px;
+  position: fixed;
+  top: 8px;
+  right: 150px;
   font-weight: bold;
 }
 
@@ -123,7 +123,12 @@ textarea {
   #app-bar {
     background-color: black;
     width: 100vw;
-    position: absolute;
+    height: 50px;
+    position: fixed;
     top: 0px;
     left: 0px;
+  }
+
+  .keep-clear {
+    height: 50px;
   }
