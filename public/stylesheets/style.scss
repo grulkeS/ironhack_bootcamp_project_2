@@ -7,8 +7,8 @@ body {
 }
 h1 {
   color: white;
-  // font-size: 1.5vw;
-  margin: 0.8vw;
+  font-size: 25px;
+  margin: 8px;
 }
 a {
   color: #fff;   // #00B7FF;
@@ -56,14 +56,6 @@ textarea {
 
 .login {
   display: inline-block;
-}
-
-.logout {
-  display: inline-block;
-  position: fixed;
-  top: 3px;
-  right: 3px;
-  font-weight: bold;
 }
 
 .input {
@@ -128,6 +120,23 @@ textarea {
     top: 0px;
     left: 0px;
   }
+
+.icon-bar {
+position: fixed;
+display: flex;
+flex-direction: row;
+align-items: center;
+top: 0px;
+right: 0px;
+height:50px;
+border: none;
+color: white;
+}
+
+.icon {
+  padding: 0 10px 0 10px;
+  text-align: center;
+}
 
   .keep-clear {
     height: 50px;

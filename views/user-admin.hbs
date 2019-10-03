@@ -1,5 +1,25 @@
 <header>
   <div class="keep-clear"></div>
+  <div class="icon-bar">
+
+    <div class="icon">
+      <a href="/search"><img src="/images/search.svg"></a>
+    </div>
+
+    {{#if session}}
+
+    <div class="icon">
+      <img src="/images/user.svg"><br>
+      <label id="whoami">{{session.name}}</label>
+    </div>
+
+    <div class="icon">
+      <a href="/logout"><img src="/images/sign-out.svg"></a>
+    </div>
+
+    {{/if}}
+  </div>
+
   <h1>User Administration for Stock Provider</h1>
   <p>Add Roles to registered users!</p>
 </header>
@@ -43,13 +63,3 @@
     {{/each}}
 
   </table>
-  {{#if session}}
-  <form class="logout container">
-    <label id="whoami">{{session.name}}</label>
-    
-    <a href="/logout"><img src="/images/sign-out.svg"></a>
-  </form>
-  {{/if}}
-  <div class="icon-top">
-    <a href="/search"><img src="/images/search.svg"></a>
-  </div>
