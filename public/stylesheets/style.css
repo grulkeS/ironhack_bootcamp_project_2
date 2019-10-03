@@ -120,4 +120,12 @@ textarea {
 .keep-clear {
   height: 50px; }
 
+.button-delete {
+  background-color: transparent;
+  border: none;
+  cursor: pointer; }
+
+.button-delete img {
+  height: 20px; }
+
 /*# sourceMappingURL=style.css.map */

@@ -1,7 +1,7 @@
 <header>
   <div class="keep-clear"></div>
   <div class="icon-bar">
-    
+
     {{#if session}}
     <div class="icon">
       <a href="/manageusers"><img src="/images/settings.svg"></a>
@@ -27,6 +27,7 @@
 </header>
 
 <section class="main-login">
+{{#unless session}}
 
   <form action="/" class="login container" method="POST">
     <h2>Login</h2>
@@ -50,11 +51,5 @@
     <a href="/register"><button type="submit">Go!</button></a>
   </form>
 
-  {{#if session}}
-  <form action="/logout" class="logout container disabled" method="POST">
-    <label id="whoami">{{session.name}}</label>
-    <a href="/logout"><button type="submit">Logout</button></a>
-  </form>
-  {{/if}}
-
+{{/unless}}
 </section>
