@@ -1,5 +1,28 @@
 <header>
   <div class="keep-clear"></div>
+  <div class="icon-bar">
+    
+    {{#if session}}
+    <div class="icon">
+      <a href="/manageusers"><img src="/images/settings.svg"></a>
+    </div>
+
+    <div class="icon">
+      <a href="/search"><img src="/images/search.svg"></a>
+    </div>
+
+
+    <div class="icon">
+      <img src="/images/user.svg"><br>
+      <label id="whoami">{{session.name}}</label>
+    </div>
+
+    <div class="icon">
+      <a href="/logout"><img src="/images/sign-out.svg"></a>
+    </div>
+    {{/if}}
+
+  </div>
   <p>Request stocks for online, store and wholesale!</p>
 </header>
 
