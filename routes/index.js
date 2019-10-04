@@ -78,7 +78,6 @@ res.render('search', {outlets: newList, session: req.session.currentUser, search
 router.post('/search', isLoggedIn, (req, res, next) => {
   console.log("index slash post 23")
 
-
   let queryObject = {};
   queryObject["org_entity_id_type"] = currentSelection; //req.body.org_entity_id_type;
   queryObject["org_entity_ids"] = req.body.org_entity_ids;
@@ -93,13 +92,38 @@ router.post('/search', isLoggedIn, (req, res, next) => {
       delete queryObject[prop];
     }
   };
-  // console.log(queryObject);
-  // console.log('------------ ', queryObject.org_entity_ids); // [ '4901', 'M860'] 
+  let params = new URLSearchParams();
+  const queryObjectEntries=Object.entries(queryObject);
+  console.log(queryObjectEntries, "array of qobject");
 
-  //?org_entity_id_type=${org_entity_id_type}&org_entity_ids=${org_entity_ids}&storage_locations=${storage_locations}
+  queryObjectEntries.forEach((entry) => {
+    if(typeof entry[1] !== `object`){
+      params.append(entry[0],entry[1]);
+    }else {
+      for(i=0; i<entry[1].length;i++){
+        params.append(entry[0], entry[1][i])
+      }
+    }
+  })
+
+
+ /* org_entity_id_type = currentSelection; //req.body.org_entity_id_type;
+  org_entity_ids = req.body.org_entity_ids;
+  warehouse_glns = req.body.warehouse_glns;
+  storage_locations = req.body.storage_locations;
+  stock_types = req.body.stock_types;
+  product_mdng_ids = req.body.product_mdng_ids;
+  product_sap_ids = req.body.product_sap_ids;*/
+
+console.log(params);
+
+
+
+
   axios.get(`${process.env.API_BASE_PATH}`,
     {
-      params: queryObject,
+      params: params,
+      responseType: 'json',
       auth: {
         username: `${process.env.API_USER}`,
         password: `${process.env.API_PASS}`
@@ -127,9 +151,7 @@ router.post('/search', isLoggedIn, (req, res, next) => {
 });
 
 router.get('/manageusers', isLoggedIn, (req, res, next) => {
-  backURL=req.header('Referer') || '/';
-  // do your thang
- 
+  backURL=req.header('Referer') || '/'; 
   User.find()
     .then(users => {
       console.log(users);
@@ -151,8 +173,7 @@ router.get('/manageusers', isLoggedIn, (req, res, next) => {
     })
 });
 
-router.post('/savechanges/:userId', isLoggedIn, (req, res, next) => {
-  console.log(req.body.role + "91 indexjs");
+router.post('/savechanges/:userId', isLoggedIn, (req, res, next) => {  
   User.findByIdAndUpdate(req.params.userId, {"role": req.body.role})
   .then(user => {
     res.redirect("/manageusers");
@@ -163,7 +184,6 @@ router.post('/savechanges/:userId', isLoggedIn, (req, res, next) => {
 });
 
 router.post('/delete/:userId', isLoggedIn, (req, res, next) => {
-  console.log(req.body.role + "91 indexjs");
   User.findByIdAndRemove(req.params.userId)
   .then(user => {
     res.redirect("/manageusers");
@@ -185,3 +205,5 @@ function isLoggedIn(req, res, next) {
 }
 
 module.exports = router;
+
+
