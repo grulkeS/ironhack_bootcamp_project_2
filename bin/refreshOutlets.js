@@ -48,7 +48,7 @@ outlets.forEach((outlet,index) => {
 
         Outlet.create(outlet, (err) => {
           if (err) { throw(err) }
-          console.log(`***** Was missing, created the missing outlet: `, outlet)
+          console.log(`***** Has been missing, created the missing outlet: `, outlet)
           if (index === outlets.length-1) {
           }
         });

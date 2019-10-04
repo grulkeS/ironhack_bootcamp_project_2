@@ -54,6 +54,10 @@ textarea {
 
 }
 
+.catch-phrase {
+  color: white;
+}
+
 .container {
   background: rgba(255, 255, 255, 0.6);
   box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.3);
@@ -189,8 +193,6 @@ color: white;
     border: 1px solid black;
   }
 
-  
-
   .messages {
     position: fixed;
     top: 51px;
@@ -204,4 +206,21 @@ color: white;
   width: calc(100vw - 80px - 1em);
   border-radius: 3px;
   height: 25px;
+  }
+
+  .page-wrapper {
+    grid-column: 1 / 7;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+  }
+
+  #page {
+
+    cursor: pointer;
+    background: white;
+    padding: 3px;
+    margin: 3px;
+    text-align: center;
   }

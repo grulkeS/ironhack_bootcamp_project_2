@@ -190,7 +190,7 @@
       `).join('');
     let pagesLength = data.length !== 0 ? Math.ceil(data.length / display) : 0;
     let pages = [...Array(pagesLength).keys()].map(x => `<div id='page'>${x + 1}</div>`).join('');
-    container.innerHTML = results + pages;
+    container.innerHTML = results + '<div class="page-wrapper">' + pages + '</div';
   }
   loadData(1, 20);
   container.addEventListener(
