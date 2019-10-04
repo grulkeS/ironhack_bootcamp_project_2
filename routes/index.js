@@ -77,10 +77,7 @@ res.render('search', {outlets: newList, session: req.session.currentUser, search
 /* POST search page */
 router.post('/search', isLoggedIn, (req, res, next) => {
   console.log("index slash post 23")
-  //User.findByIdAndUpdate(req.session.currentUser._id, {$set:{"search": []}})
-  //.then((user) =>{
-    //console.log(user);
-  
+
 
   let queryObject = {};
   queryObject["org_entity_id_type"] = currentSelection; //req.body.org_entity_id_type;
@@ -113,11 +110,14 @@ router.post('/search', isLoggedIn, (req, res, next) => {
       console.log('######## ', list.data);
       list.data.forEach(element => { element.quantity = parseInt(element.quantity) });
       //console.log(user, "test")
-       // User.findByIdAndUpdate(req.session.currentUser._id, {$addToSet: {"search" : list.data}})
+       // User.findByIdAndUpdate(req.session.currentUser._id, {$set: {"search" : list.data}}, {new: true})
        // .then((user2) =>{
          // console.log(user2)
           //res.render('search', { entries: user2.search, searchCriteria: req.body.selectNow, session: req.session.currentUser });
-          res.render('search', { entries: list.data, searchCriteria: req.body.selectNow, session: req.session.currentUser });
+          //res.render('search', { entries: list.data, searchCriteria: req.body.selectNow, session: req.session.currentUser });
+          let data = list.data.slice(0,500)
+          res.render('search', { encodedJson : encodeURIComponent(JSON.stringify(data)), entries: data, searchCriteria:
+            req.body.selectNow, session: req.session.currentUser });
       //  })
       })
       .catch(err => {

@@ -1,0 +1,39 @@
+{{/if}}
+{{#if entries}}
+<div class="container results enabled"></div>
+<script>
+  const decodedJson = decodeURIComponent("{{{encodedJson}}}");
+  const data = JSON.parse(decodedJson);
+  const container = document.getElementsByClassName('results')[0];
+  loadData = num => {
+    const results =
+      `
+   <span class="labels">orga entity</span>
+   <span class="labels">sap product id</span>
+   <span class="labels">md product id</span>
+   <span class="labels">quantity</span>
+   <span class="labels">warehouse GLN</span>
+   <span class="labels">stock type</span>
+   <span class="labels">storage location</span>
+   `
+      +
+      data.slice((num - 1) * 10, num * 10).map(data => `
+   <span>${data.org_entity_id}</span>
+   <span>${data.product_sap_id}</span>
+   <span>${data.product_mdng_id}</span>
+   <span>${data.quantity}</span>
+   <span>${data.warehouse_gln}</span>
+   <span>${data.stock_type}</span>
+   <span>${data.storage_location}</span>
+   `).join('');
+    let pages = [...Array(Math.ceil(data.length / 10)).keys()].map(x => <div id='page'>${x + 1}</div>).join('');
+    container.innerHTML = results + pages;
+  }
+  loadData(1);
+  container.addEventListener(
+    'click', event => {
+      if (event.target.id === 'page')
+        loadData(event.target.innerHTML);
+    })
+</script>
+{{/if}}
