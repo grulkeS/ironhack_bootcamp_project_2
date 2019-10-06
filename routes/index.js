@@ -81,20 +81,32 @@ router.post('/search', isLoggedIn, (req, res, next) => {
   let queryObject = {};
   queryObject["org_entity_id_type"] = currentSelection; //req.body.org_entity_id_type;
   queryObject["org_entity_ids"] = req.body.org_entity_ids;
-  queryObject["warehouse_glns"] = req.body.warehouse_glns;
+  if(req.body.warehouse_glns !==""){
+    queryObject["warehouse_glns"] = req.body.warehouse_glns.split(/[\r\n]+/);
+  }
   queryObject["storage_locations"] = req.body.storage_locations;
   queryObject["stock_types"] = req.body.stock_types;
-  queryObject["product_mdng_ids"] = req.body.product_mdng_ids;
-  queryObject["product_sap_ids"] = req.body.product_sap_ids;
+ if(req.body.product_mdng_ids !== ""){
+  queryObject["product_mdng_ids"]=req.body.product_mdng_ids.split(/[\r\n]+/);
+ }
+ if(req.body.product_sap_ids !== ""){
+  queryObject["product_sap_ids"] = req.body.product_sap_ids.split(/[\r\n]+/);
+ }
+   
+   //console.log(helper.replace()split("/r/n"), "split")
 
+  
+  //
   for (let prop in queryObject) {
     if (queryObject[prop] === "") {
       delete queryObject[prop];
     }
   };
+  
+  console.log(queryObject);
   let params = new URLSearchParams();
   const queryObjectEntries=Object.entries(queryObject);
-  console.log(queryObjectEntries, "array of qobject");
+  //console.log(queryObjectEntries, "array of qobject");
 
   queryObjectEntries.forEach((entry) => {
     if(typeof entry[1] !== `object`){
@@ -115,7 +127,7 @@ router.post('/search', isLoggedIn, (req, res, next) => {
   product_mdng_ids = req.body.product_mdng_ids;
   product_sap_ids = req.body.product_sap_ids;*/
 
-console.log(params);
+//console.log(params);
 
 
 
@@ -131,7 +143,7 @@ console.log(params);
     }
   )
     .then(list => {
-      console.log('######## ', list.data);
+      //console.log('######## ', list.data);
       list.data.forEach(element => { element.quantity = parseInt(element.quantity) });
       //console.log(user, "test")
        // User.findByIdAndUpdate(req.session.currentUser._id, {$set: {"search" : list.data}}, {new: true})
