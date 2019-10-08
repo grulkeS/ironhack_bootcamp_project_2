@@ -137,7 +137,7 @@
   <input type="number" name="maxResults" value="1000" />
 
   <label for="count" class="labels">found</label>
-  <input type="number" name="count" />
+  <input type="number" name="count" disabled/>
 
 </div>
 
@@ -179,7 +179,9 @@
       <span>${data.storage_location}</span>
       `).join('');
     let pagesLength = data.length !== 0 ? Math.ceil(data.length / display) : 0;
-    let pages = [...Array(pagesLength).keys()].map(x => `<div id='page'>${x + 1}</div>`).join('');
+    let pages = [...Array(pagesLength).keys()].map(x => `<div id='page'>${x + 1}</div>`);
+    pages[num-1] = '<div id="current-page">' + pages[num-1] + '</div>';
+    pages = pages.join('');
     container.innerHTML = results + '<div class="page-wrapper">' + pages + '</div';
   }
   loadData(1, 20);
