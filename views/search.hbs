@@ -126,39 +126,29 @@
     <button type="submit" class="button-search">search!</button>
   </div>
 
+  <div class="break"></div>
+
+  <div id="limits">
+
+  <label for="resultsPerPage" class="labels">results per page</label>
+  <input type="number" name="resultsPerPage" value="10"/>
+
+   <label for="maxResults" class="labels">max results</label>
+  <input type="number" name="maxResults" value="1000" />
+
+  <label for="count" class="labels">found</label>
+  <input type="number" name="count" />
+
+</div>
+
 </form>
+
+
+
 {{/if}}
 
-{{!-- {{#if pages}}
-{{#each page}}
-<span class="link-list">
-  <a href="/search/{{this}}">{{this}}</a>
-</span>
-{{/each}}
-{{/if}} --}}
 
-{{!--{{#if entries}}
-<div class="container results enabled">
 
-  <span class="labels">orga entity</span>
-  <span class="labels">sap product id</span>
-  <span class="labels">md product id</span>
-  <span class="labels">quantity</span>
-  <span class="labels">warehouse GLN</span>
-  <span class="labels">stock type</span>
-  <span class="labels">storage location</span>
-
-  {{#each entries}}
-  <span>{{this.org_entity_id}}</span>
-  <span>{{this.product_sap_id}}</span>
-  <span>{{this.product_mdng_id}}</span>
-  <span>{{this.quantity}}</span>
-  <span>{{this.warehouse_gln}}</span>
-  <span>{{this.stock_type}}</span>
-  <span>{{this.storage_location}}</span>
-  {{/each}}
-</div>
-{{/if}} --}}
 
 
 {{#if entries}}
@@ -178,8 +168,8 @@
       <span class="labels">stock type</span>
       <span class="labels">storage location</span>
       `
-          +
-          data.slice((num - 1) * display, num * display).map(data => `
+      +
+      data.slice((num - 1) * display, num * display).map(data => `
       <span>${data.org_entity_id}</span>
       <span>${data.product_sap_id}</span>
       <span>${data.product_mdng_id}</span>

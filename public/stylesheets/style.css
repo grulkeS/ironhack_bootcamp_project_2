@@ -175,7 +175,7 @@ textarea {
   height: 25px; }
 
 .page-wrapper {
-  grid-column: 1 / 7;
+  grid-column: 1 / 8;
   display: flex;
   justify-content: center;
   margin-top: 10px; }
@@ -186,5 +186,11 @@ textarea {
   padding: 3px;
   margin: 3px;
   text-align: center; }
+
+#limits {
+  padding: 5px; }
+
+#limits input {
+  width: 50px; }
 
 /*# sourceMappingURL=style.css.map */

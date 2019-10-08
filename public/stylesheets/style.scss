@@ -209,7 +209,7 @@ color: white;
   }
 
   .page-wrapper {
-    grid-column: 1 / 7;
+    grid-column: 1 / 8;
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -217,10 +217,17 @@ color: white;
   }
 
   #page {
-
     cursor: pointer;
     background: white;
     padding: 3px;
     margin: 3px;
     text-align: center;
+  }
+
+  #limits {
+    padding: 5px;
+  }
+
+  #limits input {
+    width: 50px;
   }
