@@ -18,7 +18,7 @@
     "express-session": "^1.16.2",
     "hbs": "^4.0.5",
     "jsdom": "^15.1.1",
-    "mongoose": "^5.2.10",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.0",
     "node-sass": "^4.12.0",
     "node-sass-middleware": "^0.11.0",
